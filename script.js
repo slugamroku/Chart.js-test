@@ -46,6 +46,11 @@ let data = {
 
     let options = {
 		scales: {
+						xAxes:[{
+							type: 'time'
+							
+						}],
+						
 						yAxes: [{
 							type: 'linear',
 							display: true,
