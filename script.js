@@ -1,5 +1,6 @@
 var time = []
 var temperature = [];
+var humidity = [];
 	
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
@@ -12,6 +13,7 @@ xmlhttp.onreadystatechange = function() {
 	for (i = 0; i < len; i++){
 		time[i] = myObj[i][0];
 		temperature[i] = myObj[i][1];
+		humidity[i] = myObj[i][2];
 	}
 //	document.getElementById("demo").innerHTML = temperature[0];
 
@@ -25,12 +27,41 @@ let data = {
         datasets: [
             {
                 label: "Temperature",
+				borderColor: 'rgba(255,0,0, 0.5)',
+				backgroundColor: 'rgba(255,0,0, 0.5)',
+				fill: false,
+				yAxisID: 'y-axis-1',
                 data: temperature
-            }
+            },
+			 {
+                label: "Humidity",
+				borderColor: 'rgba(0,255,0, 0.5)',
+				backgroundColor: 'rgba(0,255,0, 0.5)',
+				fill: false,
+				yAxisID: 'y-axis-2',
+                data: humidity
+            },
         ]
     };
 
-    let options = {};
+    let options = {
+		scales: {
+						yAxes: [{
+							type: 'linear',
+							display: true,
+							position: 'left',
+							id: 'y-axis-1',
+						}, {
+							type: 'linear',
+							display: true,
+							position: 'right',
+							id: 'y-axis-2',
+
+							gridLines: {
+								drawOnChartArea: false
+							}
+						}]
+	}};
     let ctx = document.getElementById("myChart").getContext("2d");
     let myLineChart = new Chart(ctx, {
         type: 'line',
