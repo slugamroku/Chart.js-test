@@ -1,2 +1,2 @@
-# Chart.js-test
-Testing project of chart.js for future projects
+# Temperature logging
+Temperature logging using #raspberrypi #chart.js #dht11 
