@@ -19,7 +19,7 @@ xmlhttp.onreadystatechange = function() {
 
   }
 };
-xmlhttp.open("GET", "data.json", true);
+xmlhttp.open("GET", "log.json", true);
 xmlhttp.send(); 
 
 let data = {
@@ -31,6 +31,7 @@ let data = {
 				backgroundColor: 'rgba(255,0,0, 0.5)',
 				fill: false,
 				yAxisID: 'y-axis-1',
+				pointRadius: 0,
                 data: temperature
             },
 			 {
@@ -38,6 +39,7 @@ let data = {
 				borderColor: 'rgba(0,255,0, 0.5)',
 				backgroundColor: 'rgba(0,255,0, 0.5)',
 				fill: false,
+				pointRadius: 0,
 				yAxisID: 'y-axis-2',
                 data: humidity
             },
@@ -48,9 +50,8 @@ let data = {
 		scales: {
 						xAxes:[{
 							type: 'time'
-							
 						}],
-						
+
 						yAxes: [{
 							type: 'linear',
 							display: true,
@@ -73,3 +74,5 @@ let data = {
         data: data,
         options: options
     });
+
+setTimeout(function() {myLineChart.update(); },1000);
